@@ -1,1 +1,1 @@
-# LeetCode-Problems---DSA
+# LeetCode-Problems-DSA
