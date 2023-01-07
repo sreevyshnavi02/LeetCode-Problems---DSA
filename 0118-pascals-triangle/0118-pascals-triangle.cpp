@@ -1,31 +1,19 @@
 class Solution {
 public:
     vector<vector<int>> generate(int n) {
-        vector<vector<int>> ans;
+        vector<vector<int>> ans(n); // vector of n dynamic vectors
         
-        ans.push_back(vector <int> {1});    //row 1
-        for(int i = 1; i < n; i++){
-            // cout << "row = " << i << endl;
-            // insert the row into ans vector
-            vector<int> row;
-            vector<int> prevrow = ans[i-1];
-            int prevrow_size = prevrow.size();
-            if(prevrow_size > 1){
-                // cout << "row > 1" << endl;
-                row.push_back(1);
-                for(int k = 0; k < prevrow_size - 1; k++){
-                    row.push_back(prevrow[k] + prevrow[k+1]);
-                }
-                row.push_back(1);
-                // cout << "row = ";
-                // for(int x = 0; x < row.size(); x++){
-                //     cout << " " << row[x];
-                // }
-                ans.push_back(row);
+        for(int i = 0; i < n; i++){
+            //nth row is of size n in Pascal's triangle
+            ans[i].resize(i + 1);
+            
+            ans[i][0] = 1;
+            ans[i][i] = 1;
+            
+            for(int j = 1; j < i; j++){
+                ans[i][j] = ans[i-1][j-1] + ans[i-1][j];
             }
-            else{
-                ans.push_back(vector<int> {1, 1});      //row 2
-            }   
+            
         }
         return ans;
     }
