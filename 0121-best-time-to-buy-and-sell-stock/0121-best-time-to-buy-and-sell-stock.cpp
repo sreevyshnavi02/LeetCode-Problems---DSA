@@ -1,8 +1,9 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        // brute force
+        // brute force with O(n^2) - TLE!!!!
         
+        //O(n) soln
         int n = prices.size();
         int max_prof = 0;
         int prof;
