@@ -2,12 +2,25 @@ class Solution {
 public:
     void sortColors(vector<int>& nums) {
         int n = nums.size();
+        int low, mid;
+        low = mid = 0;
+        int high = n - 1;
         
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n - i - 1; j++){
-                if(nums[j] > nums[j + 1]){
-                    swap(nums[j], nums[j+1]);
-                }
+        while(mid <= high){
+            if(nums[mid] == 2){
+                cout << "found 2 with mid = " << mid << endl;
+                swap(nums[mid], nums[high]);
+                high--;
+            }
+            else if(nums[mid] == 0){
+                cout << "found 0 with mid = " << mid << endl;
+                swap(nums[mid], nums[low]);
+                low++;
+                mid++;
+            }
+            else{
+                cout << "found 1 with mid = " << mid << endl;
+                mid++;
             }
         }
     }
